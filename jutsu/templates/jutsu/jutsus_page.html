@@ -213,23 +213,31 @@
                             <label for="AB">Abjuração</label><br>
                             <input type="checkbox" id="AD" name="desc2" value="AD" style="height:15px;width:15px;" {% if request.GET.desc2 %} checked {% endif %}>
                             <label for="AD">Advinhação</label><br>
-                            <input type="checkbox" id="EL" name="desc3" value="EL" style="height:15px;width:15px;" {% if request.GET.desc3 %} checked {% endif %}>
-                            <label for="EL">Elemental</label><br>
-                            <input type="checkbox" id="EN" name="desc4" value="EN" style="height:15px;width:15px;" {% if request.GET.desc4 %} checked {% endif %}>
+                            <input type="checkbox" id="AC" name="desc3" value="AC" style="height:15px;width:15px;" {% if request.GET.desc3 %} checked {% endif %}>
+                            <label for="AC">Elemental (ácido)</label><br>
+                            <input type="checkbox" id="EL" name="desc4" value="EL" style="height:15px;width:15px;" {% if request.GET.desc4 %} checked {% endif %}>
+                            <label for="EL">Elemental (eletricidade)</label><br>
+                            <input type="checkbox" id="FO" name="desc5" value="FO" style="height:15px;width:15px;" {% if request.GET.desc5 %} checked {% endif %}>
+                            <label for="FO">Elemental (fogo)</label><br>
+                            <input type="checkbox" id="FR" name="desc6" value="FR" style="height:15px;width:15px;" {% if request.GET.desc6 %} checked {% endif %}>
+                            <label for="FR">Elemental (frio)</label><br>
+                            <input type="checkbox" id="VE" name="desc7" value="VE" style="height:15px;width:15px;" {% if request.GET.desc7 %} checked {% endif %}>
+                            <label for="VE">Elemental (vento)</label><br>
+                            <input type="checkbox" id="EN" name="desc8" value="EN" style="height:15px;width:15px;" {% if request.GET.desc8 %} checked {% endif %}>
                             <label for="EN">Encantamento</label><br>
-                            <input type="checkbox" id="IL" name="desc5" value="IL" style="height:15px;width:15px;" {% if request.GET.desc5 %} checked {% endif %}>
+                            <input type="checkbox" id="IL" name="desc9" value="IL" style="height:15px;width:15px;" {% if request.GET.desc9 %} checked {% endif %}>
                             <label for="IL">Ilusão</label><br>
-                            <input type="checkbox" id="IN" name="desc6" value="IN" style="height:15px;width:15px;" {% if request.GET.desc6 %} checked {% endif %}>
+                            <input type="checkbox" id="IN" name="desc10" value="IN" style="height:15px;width:15px;" {% if request.GET.desc10 %} checked {% endif %}>
                             <label for="IN">Invocação</label><br>
-                            <input type="checkbox" id="NI" name="desc7" value="NI" style="height:15px;width:15px;" {% if request.GET.desc7 %} checked {% endif %}>
+                            <input type="checkbox" id="NI" name="desc11" value="NI" style="height:15px;width:15px;" {% if request.GET.desc11 %} checked {% endif %}>
                             <label for="NI">Ninja</label><br>
-                            <input type="checkbox" id="LU" name="desc8" value="LU" style="height:15px;width:15px;" {% if request.GET.desc8 %} checked {% endif %}>
+                            <input type="checkbox" id="LU" name="desc12" value="LU" style="height:15px;width:15px;" {% if request.GET.desc12 %} checked {% endif %}>
                             <label for="LU">Luz</label><br>
-                            <input type="checkbox" id="TR" name="desc9" value="TR" style="height:15px;width:15px;" {% if request.GET.desc9 %} checked {% endif %}>
+                            <input type="checkbox" id="TR" name="desc13" value="TR" style="height:15px;width:15px;" {% if request.GET.desc13 %} checked {% endif %}>
                             <label for="TR">Transmutação</label><br>
-                            <input type="checkbox" id="TT" name="desc10" value="TT" style="height:15px;width:15px;" {% if request.GET.desc10 %} checked {% endif %}>
+                            <input type="checkbox" id="TT" name="desc14" value="TT" style="height:15px;width:15px;" {% if request.GET.desc14 %} checked {% endif %}>
                             <label for="TT">Trevas</label><br>
-                            <input type="checkbox" id="VA" name="desc11" value="VA" style="height:15px;width:15px;" {% if request.GET.desc11 %} checked {% endif %}>
+                            <input type="checkbox" id="VA" name="desc15" value="VA" style="height:15px;width:15px;" {% if request.GET.desc15 %} checked {% endif %}>
                             <label for="VA">Vácuo</label><br>
                             <br>
 
@@ -267,7 +275,11 @@
 
                                 document.getElementById('AB').checked = false;
                                 document.getElementById('AD').checked = false;
+                                document.getElementById('AC').checked = false;
                                 document.getElementById('EL').checked = false;
+                                document.getElementById('FO').checked = false;
+                                document.getElementById('FR').checked = false;
+                                document.getElementById('VE').checked = false;
                                 document.getElementById('EN').checked = false;
                                 document.getElementById('IL').checked = false;
                                 document.getElementById('IN').checked = false;

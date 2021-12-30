@@ -34,7 +34,11 @@ class Jutsu(models.Model):
     DESCRIPTOR_CHOICES = [
         ('AB', 'Abjuração'),
         ('AD', 'Advinhação'),
-        ('EL', 'Elemental'),
+        ('AC', 'Elemental (ácido)'),
+        ('EL', 'Elemental (eletricidade)'),
+        ('FO', 'Elemental (fogo)'),
+        ('FR', 'Elemental (frio)'),
+        ('VE', 'Elemental (vento)'),
         ('EN', 'Encantamento'),
         ('IL', 'Ilusão'),
         ('IN', 'Invocação'),

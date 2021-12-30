@@ -15,7 +15,7 @@ def jutsus_page(request):
         query = Q()
         query &= Q()
         chacra_filters = ['FO', 'DE', 'CO', 'IN', 'SA', 'CA']
-        descriptor_filters = ['AB', 'AD', 'EL', 'EN', 'IL', 'IN', 'NI', 'LU', 'TR', 'TT', 'VA']
+        descriptor_filters = ['AB', 'AD', 'AC', 'EL', 'FO', 'FR', 'VE', 'EN', 'IL', 'IN', 'NI', 'LU', 'TR', 'TT', 'VA']
         for key, value in request.GET.items():
             if value != '':
                 if 'ch' in key and value != '':
