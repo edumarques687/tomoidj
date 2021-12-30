@@ -9,6 +9,12 @@
                 font-style: normal;
             }
             @font-face {
+                font-family: 'go3v2';
+                src: url('/static/styles/Fontes/go3v2.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
                 font-family: 'iowanOldStyleBold';
                 src: url('/static/styles/Fontes/Iowan Old Style Bold.otf') format('opentype');
                 font-weight: normal;
@@ -29,29 +35,43 @@
             }
 
             h2 {
-                font-family: 'tormenta20';
+                font-family: 'go3v2';
                 font-weight: normal;
-                color: #d13235;
+                color: white;
                 display: inline;
+                background-image:url("/static/img/pincelada.png");
+                background-size: cover;
+                background-position: right;
+                padding-right: 40px;
+                padding-left: 10px;
             }
 
             h3 {
-                font-family: 'iowanOldStyleBold';
+                font-family: 'go3v2';
                 font-weight: normal;
                 color: #f0dc82;
-                font-variant: small-caps;
+                font-size: 200%;
+            }
+
+            h4 {
+                font-family: 'go3v2';
+                font-weight: normal;
+                color: #1e7335;
+                vertical-align:text-bottom;
+                font-size: 200%;
+                text-shadow: 2px 2px 1px black;
             }
 
             h5 {
-                font-family: 'iowanOldStyleBold';
+                font-family: 'go3v2';
                 font-weight: normal;
-                color: #d13235;
-                font-variant: small-caps;
+                color: #1e7335;
                 vertical-align:text-bottom;
+                text-shadow: 2px 2px 1px white;
             }
 
             body {
-                background-image: url("/static/img/bg_2.jpg");
+                background-image: url("/static/img/bg_1.jpg");
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-size: cover;
@@ -84,7 +104,7 @@
 
             .btn-primary{
             font-family: 'iowanOldStyleRegular';
-                background-color:#3f0f12;
+                background-color:#025218;
                 border-color:#3f0f12;
                 color:#f0dc82;
             }
@@ -123,7 +143,7 @@
                 border: 1px solid transparent;
                 padding: .5rem .75rem;
                 font-family: 'iowanOldStyleRegular';
-                background-color:#3f0f12;
+                background-color:#025218;
                 border-color:#3f0f12;
                 color:#f0dc82;
                 font-weight: 400;
@@ -138,13 +158,13 @@
 
             .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
                 color: #f0dc82;
-                background-color: #3f0f12;
+                background-color: #025218;
                 border-color: #f0dc82;
             }
 
             .select:hover, .select:focus, .select:active, .select.active, .open>.dropdown-toggle.select {
                 color: #f0dc82;
-                background-color: #3f0f12;
+                background-color: #025218;
                 border-color: #f0dc82;
             }
 
@@ -168,7 +188,7 @@
                 <div class="col-md-3"></div>
 
                 <div class="col-md-3 bg_image">
-                    <div class="col-md-12" style="display: table; background-color:#B62E34;padding-top: 15px;padding-bottom: 15px;padding-left:15px;padding-right:15px">
+                    <div class="col-md-12" style="display: table;border:10px solid #593402;background-color:#1e7335;padding-top: 15px;padding-bottom: 15px;padding-left:15px;padding-right:15px">
                         <form id="filter" action="{% url 'jutsu:jutsus_page' %}">
                             <h3 style="text-align:left">
                                 Jutsus encontrados: {{ jutsus.count }}
@@ -278,7 +298,7 @@
                         {% csrf_token %}
                         {% if user.is_authenticated %}
                             {% if user_tomes %}
-                            <h2>Selecione seu tomo: </h2>
+                            <h2>Selecione seu tomo:     </h2>
                             <br>
                             <select name="tome_id" class="select">
                                 {% for tome in user_tomes%}
@@ -293,41 +313,41 @@
                         {% for g in grades %}
                             <br>
                             {% if g == 'BA' %}
-                                <h2 style="font-size:270%">Básico: </h2>
+                                <h2 style="font-size:270%">Básico:</h2>
                             {% endif %}
                             {% if g == 'ME' %}
-                                <h2 style="font-size:270%">Mediano: </h2>
+                                <h2 style="font-size:270%">Mediano:</h2>
                             {% endif %}
                             {% if g == 'AV' %}
-                                <h2 style="font-size:270%">Avançado: </h2>
+                                <h2 style="font-size:270%">Avançado:</h2>
                             {% endif %}
                             {% if g == 'SU' %}
-                                <h2 style="font-size:270%">Sublime: </h2>
+                                <h2 style="font-size:270%">Sublime:</h2>
                             {% endif %}
                             {% if g == 'LE' %}
-                                <h2 style="font-size:270%">Lendário: </h2>
+                                <h2 style="font-size:270%">Lendário:</h2>
                             {% endif %}
 
                             <button type="button" class="dropdown-btn"><i class="arrow down"></i></button>
                             <div class="dropdown-container">
                                 {% for c in chacras %}
                                     {% if c == 'FO' %}
-                                        <h4 style="font-size:270%">Força: </h4>
+                                        <h4 style="">Força: </h4>
                                     {% endif %}
                                     {% if c == 'DE' %}
-                                        <h4 style="font-size:270%">Destreza: </h4>
+                                        <h4 style="">Destreza: </h4>
                                     {% endif %}
                                     {% if c == 'CO' %}
-                                        <h4 style="font-size:270%">Constituição: </h4>
+                                        <h4 style="">Constituição: </h4>
                                     {% endif %}
                                     {% if c == 'IN' %}
-                                        <h4 style="font-size:270%">Inteligência: </h4>
+                                        <h4 style="">Inteligência: </h4>
                                     {% endif %}
                                     {% if c == 'SA' %}
-                                        <h4 style="font-size:270%">Sabedoria: </h4>
+                                        <h4 style="">Sabedoria: </h4>
                                     {% endif %}
                                     {% if c == 'CA' %}
-                                        <h4 style="font-size:270%">Carisma: </h4>
+                                        <h4 style="">Carisma: </h4>
                                     {% endif %}
                                     {% for jutsu in jutsus %}
                                         {% if jutsu.grade == g %}

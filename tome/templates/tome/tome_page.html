@@ -10,6 +10,12 @@
                 font-style: normal;
             }
             @font-face {
+                font-family: 'go3v2';
+                src: url('/static/styles/Fontes/go3v2.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
                 font-family: 'iowanOldStyleBold';
                 src: url('/static/styles/Fontes/Iowan Old Style Bold.otf') format('opentype');
                 font-weight: normal;
@@ -30,35 +36,51 @@
             }
 
             h1 {
-                font-family: 'tormenta20';
+                font-family: 'go3v2';
                 font-weight: normal;
-                color: #d13235;
+                color: #1e7335;
                 text-align: center;
-                font-size: 300%
+<!--                font-size: 200%;-->
             }
 
             h2 {
-                font-family: 'tormenta20';
+                font-family: 'go3v2';
                 font-weight: normal;
-                color: #d13235
+                color: white;
+                display: inline;
+                background-image:url("/static/img/pincelada.png");
+                background-size: cover;
+                background-position: right;
+                padding-right: 40px;
+                padding-left: 10px;
             }
 
             h3 {
-                font-family: 'iowanOldStyleBold';
+                font-family: 'go3v2';
                 font-weight: normal;
                 color: #f0dc82;
-                font-variant: small-caps;
+                font-size: 200%;
             }
 
             h4 {
-                font-family: 'iowanOldStyleBold';
+                font-family: 'go3v2';
                 font-weight: normal;
-                color: #black;
-                font-variant: small-caps;
+                color: #1e7335;
+                vertical-align:text-bottom;
+                font-size: 180%;
+                text-shadow: 1px 1px 1px black;
+            }
+
+            h5 {
+                font-family: 'go3v2';
+                font-weight: normal;
+                color: #1e7335;
+                vertical-align:text-bottom;
+                text-shadow: 2px 2px 1px white;
             }
 
             body {
-                background-image: url("/static/img/bg_2.jpg");
+                background-image: url("/static/img/bg_1.jpg");
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-size: cover;
@@ -91,10 +113,74 @@
 
             .btn-primary{
             font-family: 'iowanOldStyleRegular';
-                background-color:#3f0f12;
+                background-color:#025218;
                 border-color:#3f0f12;
                 color:#f0dc82;
             }
+
+            .dropdown-btn{
+                background-color:Transparent;
+                background-repeat:no-repeat;
+                border: none;
+                cursor:pointer;
+                overflow: hidden;
+                outline:none;
+            }
+            .dropdown-container {
+                display: block;
+            }
+
+            .arrow {
+                border: solid;
+                border-width: 0 3px 3px 0;
+                padding: 6px;
+                display: inline-block;
+                align: center;
+                color: #d13235;
+            }
+            .down {
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+            }
+
+            .hide{
+                transform: rotate(90deg);
+                -webkit-transform: rotate(90deg);
+            }
+
+            .select{
+                border: 1px solid transparent;
+                padding: .5rem .75rem;
+                font-family: 'iowanOldStyleRegular';
+                background-color:#025218;
+                border-color:#3f0f12;
+                color:#f0dc82;
+                font-weight: 400;
+                line-height: 1.5;
+                vertical-align: middle;
+                font-size: 1rem;
+                border-radius: .25rem;
+                text-align: center;
+                text-decoration: none;
+                min-width: 8rem;
+            }
+
+            .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+                color: #f0dc82;
+                background-color: #025218;
+                border-color: #f0dc82;
+            }
+
+            .select:hover, .select:focus, .select:active, .select.active, .open>.dropdown-toggle.select {
+                color: #f0dc82;
+                background-color: #025218;
+                border-color: #f0dc82;
+            }
+
+            img {
+                display: inline-block;
+            }
+
         </style>
 
 <div class="container-fluid" >
@@ -114,39 +200,39 @@
                             {% for g in grades %}
                                 <br>
                                 {% if g == 'BA' %}
-                                <h2 style="font-size:270%">Básico: </h2>
+                                <h2 >Básico: </h2>
                                 {% endif %}
                                 {% if g == 'ME' %}
-                                <h2 style="font-size:270%">Mediano: </h2>
+                                <h2 >Mediano: </h2>
                                 {% endif %}
                                 {% if g == 'AV' %}
-                                <h2 style="font-size:270%">Avançado: </h2>
+                                <h2 >Avançado: </h2>
                                 {% endif %}
                                 {% if g == 'SU' %}
-                                <h2 style="font-size:270%">Sublime: </h2>
+                                <h2 >Sublime: </h2>
                                 {% endif %}
                                 {% if g == 'LE' %}
-                                <h2 style="font-size:270%">Lendário: </h2>
+                                <h2 >Lendário: </h2>
                                 {% endif %}
 
                                     {% for c in chacras %}
                                         {% if c == 'FO' %}
-                                            <h4 style="font-size:270%">Força: </h4>
+                                            <h4 >Força: </h4>
                                         {% endif %}
                                         {% if c == 'DE' %}
-                                            <h4 style="font-size:270%">Destreza: </h4>
+                                            <h4 >Destreza: </h4>
                                         {% endif %}
                                         {% if c == 'CO' %}
-                                            <h4 style="font-size:270%">Constituição: </h4>
+                                            <h4 >Constituição: </h4>
                                         {% endif %}
                                         {% if c == 'IN' %}
-                                            <h4 style="font-size:270%">Inteligência: </h4>
+                                            <h4 >Inteligência: </h4>
                                         {% endif %}
                                         {% if c == 'SA' %}
-                                            <h4 style="font-size:270%">Sabedoria: </h4>
+                                            <h4 >Sabedoria: </h4>
                                         {% endif %}
                                         {% if c == 'CA' %}
-                                            <h4 style="font-size:270%">Carisma: </h4>
+                                            <h4 >Carisma: </h4>
                                         {% endif %}
 
                                         {% for jutsu in jutsu_list %}
@@ -157,10 +243,10 @@
                                                     <input type="hidden" name="jutsu" value='{{ jutsu.id }}'>
                                                     {% csrf_token %}
                                                     <a href="{% url 'jutsu:jutsu_details' jutsu.id %}" style="text-decoration:none; color:inherit">
-                                                        <h4>
+                                                        <h5>
                                                             <input type="submit" value="Remov." class="btn btn-primary" style="padding:0;height:25px;width:auto">
                                                             {{ jutsu.name }}
-                                                        </h4>
+                                                        </h5>
                                                     </a>
                                                 </form>
                                             {% endif %}
