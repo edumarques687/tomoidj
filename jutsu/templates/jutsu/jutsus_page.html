@@ -1,0 +1,378 @@
+{% extends './jutsu_base.html' %}
+{% block content %}
+
+        <style>
+            @font-face {
+                font-family: 'tormenta20';
+                src: url('/static/styles/Fontes/Tormenta20.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'iowanOldStyleBold';
+                src: url('/static/styles/Fontes/Iowan Old Style Bold.otf') format('opentype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'iowanOldStyleBoldItalic';
+                src: url('/static/styles/Fontes/Iowan Old Style Bold Italic.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'iowanOldStyleRegular';
+                src: url('/static/styles/Fontes/Iowan Old Style Regular.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            h2 {
+                font-family: 'tormenta20';
+                font-weight: normal;
+                color: #d13235;
+                display: inline;
+            }
+
+            h3 {
+                font-family: 'iowanOldStyleBold';
+                font-weight: normal;
+                color: #f0dc82;
+                font-variant: small-caps;
+            }
+
+            h5 {
+                font-family: 'iowanOldStyleBold';
+                font-weight: normal;
+                color: #d13235;
+                font-variant: small-caps;
+                vertical-align:text-bottom;
+            }
+
+            body {
+                background-image: url("/static/img/bg_2.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                bacground-position: center;
+            }
+
+            .bg_image {
+                background-image: url("/static/img/background.png");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                bacground-position: center;
+            }
+
+            .bld{
+                font-family: 'iowanOldStyleBold';
+                color: white;
+                font-weight: normal;
+                font-style: normal;
+                font-size: 110%;
+                font-variant: small-caps;
+            }
+
+            label{
+                font-family: 'iowanOldStyleRegular';
+                color: white;
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            .btn-primary{
+            font-family: 'iowanOldStyleRegular';
+                background-color:#3f0f12;
+                border-color:#3f0f12;
+                color:#f0dc82;
+            }
+
+            .dropdown-btn{
+                background-color:Transparent;
+                background-repeat:no-repeat;
+                border: none;
+                cursor:pointer;
+                overflow: hidden;
+                outline:none;
+            }
+            .dropdown-container {
+                display: block;
+            }
+
+            .arrow {
+                border: solid;
+                border-width: 0 3px 3px 0;
+                padding: 6px;
+                display: inline-block;
+                align: center;
+                color: #d13235;
+            }
+            .down {
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+            }
+
+            .hide{
+                transform: rotate(90deg);
+                -webkit-transform: rotate(90deg);
+            }
+
+            .select{
+                border: 1px solid transparent;
+                padding: .5rem .75rem;
+                font-family: 'iowanOldStyleRegular';
+                background-color:#3f0f12;
+                border-color:#3f0f12;
+                color:#f0dc82;
+                font-weight: 400;
+                line-height: 1.5;
+                vertical-align: middle;
+                font-size: 1rem;
+                border-radius: .25rem;
+                text-align: center;
+                text-decoration: none;
+                min-width: 8rem;
+            }
+
+            .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+                color: #f0dc82;
+                background-color: #3f0f12;
+                border-color: #f0dc82;
+            }
+
+            .select:hover, .select:focus, .select:active, .select.active, .open>.dropdown-toggle.select {
+                color: #f0dc82;
+                background-color: #3f0f12;
+                border-color: #f0dc82;
+            }
+
+            img {
+                display: inline-block;
+            }
+
+        </style>
+
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row" style="padding-top:15px"></div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 bg_image" style="padding-top: 13px">
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+
+                <div class="col-md-3 bg_image">
+                    <div class="col-md-12" style="display: table; background-color:#B62E34;padding-top: 15px;padding-bottom: 15px;padding-left:15px;padding-right:15px">
+                        <form id="filter" action="{% url 'jutsu:jutsus_page' %}">
+                            <h3 style="text-align:left">
+                                Jutsus encontrados: {{ jutsus.count }}
+                            </h3>
+                            <label class="bld"><b>Chacra: </b></label><br>
+                            <input type="checkbox" id="Força" name="ch1" value="FO" style="height:15px;width:15px;" {% if request.GET.ch1 %} checked {% endif %}>
+                            <label for="Força">Força</label><br>
+                            <input type="checkbox" id="Destreza" name="ch2" value="DE" style="height:15px;width:15px;" {% if request.GET.ch2 %} checked {% endif %}>
+                            <label for="Destreza">Destreza</label><br>
+                            <input type="checkbox" id="Constituição" name="ch3" value="CO" style="height:15px;width:15px;" {% if request.GET.ch3 %} checked {% endif %}>
+                            <label for="Constituição">Constituição</label><br>
+                            <input type="checkbox" id="Inteligência" name="ch4" value="IN" style="height:15px;width:15px;" {% if request.GET.ch4 %} checked {% endif %}>
+                            <label for="Inteligência">Inteligência</label><br>
+                            <input type="checkbox" id="Sabedoria" name="ch5" value="SA" style="height:15px;width:15px;" {% if request.GET.ch5 %} checked {% endif %}>
+                            <label for="Sabedoria">Sabedoria</label><br>
+                            <input type="checkbox" id="Carisma" name="ch6" value="CA" style="height:15px;width:15px;" {% if request.GET.ch6 %} checked {% endif %}>
+                            <label for="Carisma">Carisma</label><br>
+                            <br>
+
+                            <label class="bld"><b>Descritor: </b></label><br>
+                            <input type="checkbox" id="AB" name="desc1" value="AB" style="height:15px;width:15px;" {% if request.GET.desc1 %} checked {% endif %}>
+                            <label for="AB">Abjuração</label><br>
+                            <input type="checkbox" id="AD" name="desc2" value="AD" style="height:15px;width:15px;" {% if request.GET.desc2 %} checked {% endif %}>
+                            <label for="AD">Advinhação</label><br>
+                            <input type="checkbox" id="EL" name="desc3" value="EL" style="height:15px;width:15px;" {% if request.GET.desc3 %} checked {% endif %}>
+                            <label for="EL">Elemental</label><br>
+                            <input type="checkbox" id="EN" name="desc4" value="EN" style="height:15px;width:15px;" {% if request.GET.desc4 %} checked {% endif %}>
+                            <label for="EN">Encantamento</label><br>
+                            <input type="checkbox" id="IL" name="desc5" value="IL" style="height:15px;width:15px;" {% if request.GET.desc5 %} checked {% endif %}>
+                            <label for="IL">Ilusão</label><br>
+                            <input type="checkbox" id="IN" name="desc6" value="IN" style="height:15px;width:15px;" {% if request.GET.desc6 %} checked {% endif %}>
+                            <label for="IN">Invocação</label><br>
+                            <input type="checkbox" id="NI" name="desc7" value="NI" style="height:15px;width:15px;" {% if request.GET.desc7 %} checked {% endif %}>
+                            <label for="NI">Ninja</label><br>
+                            <input type="checkbox" id="LU" name="desc8" value="LU" style="height:15px;width:15px;" {% if request.GET.desc8 %} checked {% endif %}>
+                            <label for="LU">Luz</label><br>
+                            <input type="checkbox" id="TR" name="desc9" value="TR" style="height:15px;width:15px;" {% if request.GET.desc9 %} checked {% endif %}>
+                            <label for="TR">Transmutação</label><br>
+                            <input type="checkbox" id="TT" name="desc10" value="TT" style="height:15px;width:15px;" {% if request.GET.desc10 %} checked {% endif %}>
+                            <label for="TT">Trevas</label><br>
+                            <input type="checkbox" id="VA" name="desc11" value="VA" style="height:15px;width:15px;" {% if request.GET.desc11 %} checked {% endif %}>
+                            <label for="VA">Vácuo</label><br>
+                            <br>
+
+                            <label class="bld" for="keyword">Palavras-chave: (separe com ';')</label>
+                            <input type="text" id="keyword" name="keyword" style="display:table-cell; width:100%" {% if request.GET.keyword %} value="{{request.GET.keyword}}" {% endif %}><br>
+                            <label class="bld" for="execution">Execução: </label>
+                            <input type="text" id="execution" name="execution" style="display:table-cell; width:100%"{% if request.GET.execution %} value="{{request.GET.execution}}" {% endif %}><br>
+                            <label class="bld" for="duration">Duração: </label>
+                            <input type="text" id="duration" name="duration" style="display:table-cell; width:100%"{% if request.GET.duration %} value="{{request.GET.duration}}" {% endif %}><br>
+                            <label class="bld" for="range">Alcance: </label>
+                            <input type="text" id="range" name="range" style="display:table-cell; width:100%"{% if request.GET.range %} value="{{request.GET.range}}" {% endif %}><br>
+                            <label class="bld" for="target_area_effect">Alvo, Área ou Efeito: </label>
+                            <input type="text" id="target_area_effect" name="target_area_effect" style="display:table-cell; width:100%"{% if request.GET.target_area_effect %} value="{{request.GET.target_area_effect}}" {% endif %}><br>
+                            <label class="bld" for="resistance">Resistência: </label>
+                            <input type="text" id="resistance" name="resistance" style="display:table-cell; width:100%"{% if request.GET.resistance %} value="{{request.GET.resistance}}" {% endif %}><br>
+
+                            <label class="bld" >Publicação: </label>
+                            <select name="book_magazine" style="display:table-cell; width:100%">
+                                <option value="" selected="selected">Todas</option>
+                                {% for origin in origins %}
+                                <option value="{{origin}}">{{origin}}</option>
+                                {% endfor %}
+                            </select><br><br>
+
+                            <input type="submit" value="Filtrar jutsus" class="btn btn-primary">
+                            <button class="btn btn-primary" style="margin-left:10px" onclick="
+                                document.getElementById('filter').reset();
+
+                                document.getElementById('Força').checked = false;
+                                document.getElementById('Destreza').checked = false;
+                                document.getElementById('Constituição').checked = false;
+                                document.getElementById('Inteligência').checked = false;
+                                document.getElementById('Sabedoria').checked = false;
+                                document.getElementById('Carisma').checked = false;
+
+                                document.getElementById('AB').checked = false;
+                                document.getElementById('AD').checked = false;
+                                document.getElementById('EL').checked = false;
+                                document.getElementById('EN').checked = false;
+                                document.getElementById('IL').checked = false;
+                                document.getElementById('IN').checked = false;
+                                document.getElementById('NI').checked = false;
+                                document.getElementById('LU').checked = false;
+                                document.getElementById('TR').checked = false;
+                                document.getElementById('TT').checked = false;
+                                document.getElementById('VA').checked = false;
+
+                                document.getElementById('keyword').value = null;
+                                document.getElementById('execution').value = null;
+                                document.getElementById('duration').value = null;
+                                document.getElementById('range').value = null;
+                                document.getElementById('target_area_effect').value = null;
+                                document.getElementById('resistance').value = null;
+
+                                return false;
+                            ">
+                                Limpar filtros
+                            </button>
+                            <br>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-3 bg_image" style="padding-top: 15px;padding-bottom: 15px;padding-left:15px;padding-right:15px">
+                    {% load static %}
+                    <form action="{% url 'tome:add_jutsus' %}" method="POST">
+                        {% csrf_token %}
+                        {% if user.is_authenticated %}
+                            {% if user_tomes %}
+                            <h2>Selecione seu tomo: </h2>
+                            <br>
+                            <select name="tome_id" class="select">
+                                {% for tome in user_tomes%}
+                                    <option value="{{tome.id}}">{{tome.name}}</option>
+                                {% endfor %}
+                            </select>
+
+                            <input type="submit" value="Adicionar jutsus" class="btn btn-primary"><br>
+                            {% endif %}
+                        {% endif %}
+
+                        {% for g in grades %}
+                            <br>
+                            {% if g == 'BA' %}
+                                <h2 style="font-size:270%">Básico: </h2>
+                            {% endif %}
+                            {% if g == 'ME' %}
+                                <h2 style="font-size:270%">Mediano: </h2>
+                            {% endif %}
+                            {% if g == 'AV' %}
+                                <h2 style="font-size:270%">Avançado: </h2>
+                            {% endif %}
+                            {% if g == 'SU' %}
+                                <h2 style="font-size:270%">Sublime: </h2>
+                            {% endif %}
+                            {% if g == 'LE' %}
+                                <h2 style="font-size:270%">Lendário: </h2>
+                            {% endif %}
+
+                            <button type="button" class="dropdown-btn"><i class="arrow down"></i></button>
+                            <div class="dropdown-container">
+                                {% for c in chacras %}
+                                    {% if c == 'FO' %}
+                                        <h4 style="font-size:270%">Força: </h4>
+                                    {% endif %}
+                                    {% if c == 'DE' %}
+                                        <h4 style="font-size:270%">Destreza: </h4>
+                                    {% endif %}
+                                    {% if c == 'CO' %}
+                                        <h4 style="font-size:270%">Constituição: </h4>
+                                    {% endif %}
+                                    {% if c == 'IN' %}
+                                        <h4 style="font-size:270%">Inteligência: </h4>
+                                    {% endif %}
+                                    {% if c == 'SA' %}
+                                        <h4 style="font-size:270%">Sabedoria: </h4>
+                                    {% endif %}
+                                    {% if c == 'CA' %}
+                                        <h4 style="font-size:270%">Carisma: </h4>
+                                    {% endif %}
+                                    {% for jutsu in jutsus %}
+                                        {% if jutsu.grade == g %}
+                                        {% if jutsu.chacra == c %}
+                                            <a href="{% url 'jutsu:jutsu_details' jutsu.id %}" style="text-decoration: none">
+                                                <h5>
+                                                    {% if user.is_authenticated %}
+                                                        {% if user_tomes %}
+                                                            <input type="checkbox" name="jutsu{{jutsu.id}}" value={{jutsu.id}} style="height:18px;width:18px;vertical-align:text-bottom">
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {{ jutsu.name }}
+                                                </h5>
+                                            </a>
+                                        {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+
+                    </form>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("hide");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "none") {
+      dropdownContent.style.display = "block";
+    } else {
+      dropdownContent.style.display = "none";
+    }
+  });
+}
+</script>
+
+
+{% endblock %}
