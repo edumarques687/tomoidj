@@ -21,7 +21,7 @@ def signupuser(request):
                 user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
                 user.save()
                 login(request, user)
-                return redirect('/tome/t/')
+                return redirect('/tome/g/')
             except IntegrityError:
                 return render(request, 'homepage/signupuser.html', {'form': UserCreationForm(), 'error':'Este usuário não está disponível'})
         else:
@@ -37,7 +37,7 @@ def loginuser(request):
             return render(request, 'homepage/loginuser.html', {'form': AuthenticationForm(), 'error': 'Usuário e/ou senha incorreta!'})
         else:
             login(request, user)
-            return redirect('/tome/t/')
+            return redirect('/tome/g/')
 
 def logoutuser(request):
     if request.method == 'POST':
