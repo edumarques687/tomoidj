@@ -21,6 +21,9 @@ app_name = 'jutsu'
 
 urlpatterns = [
     path('', views.jutsus_page, name='jutsus_page'),
-    # path('copysortingname/', views.copy_sorting_name, name='copy_sorting_name'),
+    path('copysortingname/', views.copy_sorting_name, name='copy_sorting_name'),
+    path('removechar/', views.remove_strange_char, name='remove_strange_char'),
+    path('complete_fields/', views.complete_fields, name='complete_fields'),
+    path('trim/', views.trim, name='trim'),
     path('<int:jutsu_id>/', views.jutsu_details, name='jutsu_details'),
 ]
