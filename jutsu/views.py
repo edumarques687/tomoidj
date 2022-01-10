@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from jutsu.models import Jutsu, Enhancement
 from django.db.models import Q
 from tome.models import Tome
-import unidecode
-import regex as rx
+# import unidecode
+# import regex as rx
 
 
 def jutsus_page(request):
@@ -76,7 +76,7 @@ def jutsu_details(request, jutsu_id):
     jutsu = get_object_or_404(Jutsu, pk=jutsu_id)
     enhancements = Enhancement.objects.filter(related_jutsu=jutsu_id)
     return render(request, 'jutsu/jutsu_details.html', {'jutsu': jutsu, 'enhancements': enhancements})
-
+"""
 def remove_control_characters(str):
     return rx.sub(r'[\x02]', '', str)
 
@@ -166,3 +166,4 @@ def trim(request):
             en.save()
 
     return render(request, 'homepage/home.html', {'response': 'DONE'})
+"""
