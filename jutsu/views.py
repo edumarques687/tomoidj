@@ -75,6 +75,7 @@ def jutsu_details(request, jutsu_id):
     jutsu = get_object_or_404(Jutsu, pk=jutsu_id)
     enhancements = Enhancement.objects.filter(related_jutsu=jutsu_id)
     return render(request, 'jutsu/jutsu_details.html', {'jutsu': jutsu, 'enhancements': enhancements})
+
 """
 def remove_control_characters(str):
     return rx.sub(r'[\x02]', '', str)
@@ -129,7 +130,7 @@ def complete_fields(request):
             j.range = "ilimitado"
         if j.target_area_effect == "v":
             j.target_area_effect = "você"
-        if j.target_area_effect == 1:
+        if j.target_area_effect == "1":
             j.target_area_effect = "1 criatura"
         if j.duration == "c":
             j.duration = "cena"
