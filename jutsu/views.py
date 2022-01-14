@@ -5,7 +5,6 @@ from tome.models import Tome
 # import unidecode
 # import regex as rx
 
-
 def jutsus_page(request):
     user_tomes = False
 
@@ -126,6 +125,8 @@ def complete_fields(request):
             j.range = "curto"
         if j.range == "l":
             j.range = "longo"
+        if j.range == "i":
+            j.range = "ilimitado"
         if j.target_area_effect == "v":
             j.target_area_effect = "você"
         if j.target_area_effect == 1:
